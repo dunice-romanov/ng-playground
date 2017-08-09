@@ -1,18 +1,30 @@
+const jwt = require('jsonwebtoken');
+
 const User = require('../../../../models/user');
-const MONGO_ERRORS = require('../../../../constants').MONGO_ERRORS;
+const constants = require('../../../../constants'),
+      MONGO_ERRORS = constants.MONGO_ERRORS,
+      JWT_SECRET = constants.JWT_SECRET;
 
 const createUser = (req, res, next) => {
-  
   const { password, username } = req.body;
 
-  if (!password || !username) { res.status(400).json({ error: 'You should enter login and password'}) }
+  if (!password || !username) { 
+    return res.status(400).json({
+     error: 'You should enter login and password'
+    })
+  }
 
   User.create({
     username,
     password,
   })
   .then((user) => {
-    res.json(user.toSafeObject());
+    const safeUser = user.toSafeObject(),
+          token = jwt.sign(safeUser, JWT_SECRET, { expiresIn: '5m' });
+    res.json({
+      user: safeUser,
+      token,
+    })
   })
   .catch((error) => {
     console.log(error.code);

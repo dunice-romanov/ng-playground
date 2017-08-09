@@ -2,6 +2,9 @@ const MONGO_ERRORS = {
   DUPLICATE_ERROR: 11000,
 };
 
+const JWT_SECRET = 'I_AM_SECRET_KEY';
+
 module.exports = {
   MONGO_ERRORS,
+  JWT_SECRET
 }
