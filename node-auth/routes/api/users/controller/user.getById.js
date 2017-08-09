@@ -12,7 +12,9 @@ const findUserById = (req, res, next) => {
       
       res.json(safeUser);
     })
-
+    .catch((error) => {
+      res.status(400).json({error: 'User not found'});
+    })
 }
 
 module.exports = findUserById;
