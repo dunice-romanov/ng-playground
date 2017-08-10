@@ -5,6 +5,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const passport = require('./middlewares/passport');
+const cors = require('cors');
 const mongoose = require('mongoose'),
       MONGO_URI = 'mongodb://localhost/ng-auth';
 
@@ -12,6 +13,9 @@ const routes = require('./routes/index');
 const users = require('./routes/users');
 
 const app = express();
+
+//initialize cors
+app.use(cors());
 
 //initialize passport
 app.use(passport.initialize());
