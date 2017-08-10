@@ -9,10 +9,18 @@ const jwtOptions = {
   secretOrKey: JWT_SECRET,
 };
 
-//TODO: complete jwt function
 passport.use(new JWTStrategy.Strategy(jwtOptions, (payload, done) => {
-  console.log('payload', payload);
-  return done(null, {user: 'hi'});
+  const { id } = payload;
+  if (!id) { return done(null, false); }
+  User.findById(payload.id)
+    .then((user) => {
+      if (user) { return done(null, user); }
+      return done(null, false);
+    })
+    .catch((error) => {
+      console.log('JWTStrategy error', error);
+      return done(error);
+    });
 }));
 
 module.exports = passport;
