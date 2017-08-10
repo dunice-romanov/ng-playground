@@ -3,8 +3,10 @@ const MONGO_ERRORS = {
 };
 
 const JWT_SECRET = 'I_AM_SECRET_KEY';
+const JWT_EXPIRE_TIME = '1h';
 
 module.exports = {
   MONGO_ERRORS,
-  JWT_SECRET
+  JWT_SECRET,
+  JWT_EXPIRE_TIME,
 }

@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = require('../../../../constants').JWT_SECRET;
+const JWT_SECRET = require('../../../../constants').JWT_SECRET,
+      JWT_EXPIRE_TIME = require('../../../../constants').JWT_EXPIRE_TIME;
 
 const User = require('../../../../models/user');
 
@@ -17,12 +18,12 @@ const loginUser = (req, res, next) => {
       }
       const safeUser = user.toSafeObject(), 
             token = jwt.sign(user.toSafeObject(), JWT_SECRET, {
-              expiresIn: '5m',
+              expiresIn: JWT_EXPIRE_TIME,
             });
 
       res.json({
         user: safeUser,
-        token,
+        token: `JWT ${token}`,
       })
     })
     .catch((error) => {
