@@ -7,6 +7,8 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './global-components/navbar/navbar.component';
 
+import { UserService } from './core/_services/user.service';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -16,6 +18,9 @@ import { NavbarComponent } from './global-components/navbar/navbar.component';
   declarations: [
     AppComponent,
     NavbarComponent,
+  ],
+  providers: [
+    UserService,
   ],
   bootstrap: [AppComponent]
 })
