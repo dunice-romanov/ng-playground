@@ -5,6 +5,10 @@ const getAllUsers = (req, res, next) => {
     .then((users) => {
       const usersForResponse = users.map((user) => user.toSafeObject());
       res.json(usersForResponse);
+    })
+    .catch((error) => {
+      console.log('User findAll error', error);
+      res.status(400).json({error: 'Error finding users'});
     });
 };
 
