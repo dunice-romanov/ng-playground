@@ -1,7 +1,9 @@
-const router = require('express').Router();
+const router = require('express').Router(),
+      passport = require('../../../middlewares/passport');
 
 const controller = require('./controller');
 
-router.get('/', controller.getAllTodos);
+router.get('/', passport.authenticate('jwt', {session: false}), controller.getAllTodos);
+router.post('/', passport.authenticate('jwt', {session: false}), controller.createTodo);
 
 module.exports = router;
