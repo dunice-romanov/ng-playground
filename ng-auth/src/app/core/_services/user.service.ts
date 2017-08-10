@@ -33,8 +33,8 @@ export class UserService {
   registerUser(username: string, password: string) {
     const uri = `${API_URI}${this.USER_URI}`,
       body = {
-        username: username.trim(),
-        password: password.trim(),
+        username,
+        password,
       };
     return this.http.post(uri, body)
             .map((response) => {
@@ -55,12 +55,10 @@ export class UserService {
               .map((response) => {
                 const json = response.json(),
                       user = this._jsonToUser(json);
-                console.log(json, user);
                 this._setUser(user);
                 return user;
               })
               .catch((error) => Observable.throw(error));
-
   };
 
   logout() {
