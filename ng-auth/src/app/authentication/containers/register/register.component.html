@@ -1,3 +1,37 @@
-<p>
-  register works!
-</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+  
+  <div>
+    <label>Username:
+      <input type="text" formControlName="username">
+    </label>
+    <div *ngIf="inputInvalid(username)">
+      Field is required
+    </div>
+  </div>
+    
+
+  <div formGroupName="password">
+    <div>
+      <label>Password
+        <input type="password" formControlName="passwordOriginal">
+      </label>
+      <div *ngIf="inputInvalid(passwordOriginal)">
+        Field is required
+      </div>
+    </div>
+
+    <div>
+      <label>Confirm password
+        <input type="password" formControlName="passwordConfirm">
+      </label>
+      <div *ngIf="inputInvalid(passwordConfirm)">
+        Field is required
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="loginForm.invalid || loading">Login!</button>
+
+</form>
+
+<div *ngIf="loginError">Login error</div>

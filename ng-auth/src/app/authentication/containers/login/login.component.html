@@ -1,3 +1,25 @@
-<p>
-  login works!
-</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+  
+  <div>
+    <label>Username:
+      <input type="text" formControlName="username">
+    </label>
+    <div *ngIf="username.invalid  && (username.dirty || username.touched)">
+      Field is required
+    </div>
+  </div>
+    
+  <div>
+    <label>Password
+      <input type="password" formControlName="password">
+    </label>
+    <div *ngIf="password.invalid  && (password.dirty || password.touched)">
+      Field is required
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="loginForm.invalid || loading">Login!</button>
+
+</form>
+
+<div *ngIf="loginError">Login error</div>
