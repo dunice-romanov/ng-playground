@@ -9,6 +9,9 @@ import { NavbarComponent } from './global-components/navbar/navbar.component';
 
 import { UserService } from './core/_services/user.service';
 
+import { CanActivateViaAuthGuard } from './_guards/is-logged-in.guard';
+import { NotAuthGuard } from './_guards/not-logged-in.guard';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -21,6 +24,8 @@ import { UserService } from './core/_services/user.service';
   ],
   providers: [
     UserService,
+    CanActivateViaAuthGuard,
+    NotAuthGuard,
   ],
   bootstrap: [AppComponent]
 })
