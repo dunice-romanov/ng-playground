@@ -17,17 +17,13 @@ export class UserService {
 
   USER_URI = '/users';
   user$: BehaviorSubject<User>;
+  loggedIn: boolean = false;
 
   constructor(
     private http: Http,
     private router: Router,
   ) { 
-    const user = this._getUserFromLocalStorage();
-    if (user) {
-      this.user$ = new BehaviorSubject<User>(user);
-    } else {
-      this.user$ = new BehaviorSubject<User>(null);
-    }
+    this._initUser();
   }
 
   registerUser(username: string, password: string) {
@@ -61,6 +57,10 @@ export class UserService {
               .catch((error) => Observable.throw(error));
   };
 
+  isLoggedIn() {
+    return this.loggedIn;
+  }
+
   logout() {
     this._removeUser();
     this.router.navigate(['/']);
@@ -81,13 +81,26 @@ export class UserService {
     return null;
   };
 
+  _initUser() {
+    const user = this._getUserFromLocalStorage();
+    if (user) {
+      this.user$ = new BehaviorSubject<User>(user);
+      this.loggedIn = true;
+    } else {
+      this.user$ = new BehaviorSubject<User>(null);
+      this.loggedIn = false;
+    }
+  }
+
   _setUser(user: User) {
+    this.loggedIn = true;
     this.user$.next(user);
     localStorage.user = JSON.stringify(user);
   };
 
   _removeUser() {
     this.user$.next(null);
+    this.loggedIn = false;
     localStorage.removeItem('user');
   }
 

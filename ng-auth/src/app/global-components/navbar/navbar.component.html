@@ -1,4 +1,13 @@
 <nav>
-  <a routerLink="login">Login</a>
-  <a routerLink="register">Register</a>
+
+  <ng-container *ngIf="!user">
+    <a routerLink="login">Login</a>
+    <a routerLink="register">Register</a>
+  </ng-container>
+
+  <ng-container *ngIf="user">
+    <a routerLink="todos/list">Todo List</a>
+    <a (click)="onLogout()">Logout</a>
+  </ng-container>
+
 </nav>
