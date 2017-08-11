@@ -1,25 +1,21 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
-  
-  <div>
-    <label>Username:
-      <input type="text" formControlName="username">
-    </label>
-    <div *ngIf="username.invalid  && (username.dirty || username.touched)">
-      Field is required
-    </div>
-  </div>
-    
-  <div>
-    <label>Password
-      <input type="password" formControlName="password">
-    </label>
-    <div *ngIf="password.invalid  && (password.dirty || password.touched)">
-      Field is required
-    </div>
+  <div fxLayout="column">
+    <md-input-container>
+      <input mdInput type="text" placeholder="Username" formControlName="username">
+      <md-error *ngIf="username.invalid  && (username.dirty || username.touched)">
+        Field is required
+      </md-error>
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput type="password" placeholder="Password" formControlName="password">
+      <md-error *ngIf="password.invalid  && (password.dirty || password.touched)">
+        Field is required
+      </md-error>
+    </md-input-container>
   </div>
 
-  <button type="submit" [disabled]="loginForm.invalid || loading">Login!</button>
-
+  <button md-raised-button type="submit" [disabled]="loginForm.invalid || loading">Login!</button>
 </form>
 
 <div *ngIf="loginError">Login error</div>

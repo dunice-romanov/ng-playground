@@ -1,0 +1,10 @@
+nav {
+  border: 1px dashed black;
+  padding: 10px;
+}
+
+nav a {
+  border: 1px dashed black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

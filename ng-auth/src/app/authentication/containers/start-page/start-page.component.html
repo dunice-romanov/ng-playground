@@ -1,4 +1,28 @@
-<div >
-  <app-login *ngIf="state === STATES.LOGIN"></app-login>
-  <app-register *ngIf="state === STATES.REGISTER"></app-register>
+<div class="container">
+    <div [@flyInOut] (@flyInOut.done)="onFlyInOutDone($event, '')" *ngIf="state === STATES.REGISTER || state === STATES.LOGIN" class="authentication">
+      <md-card class="authentication-form">
+        <md-card-content>
+          <app-login *ngIf="state === STATES.LOGIN"></app-login>
+          <app-register *ngIf="state === STATES.REGISTER"></app-register>
+        </md-card-content>
+        <md-card-actions>
+        </md-card-actions>
+      </md-card>
+      <div class="authentication-tumbler">
+        Wait, I want to 
+        <a 
+          *ngIf="state === STATES.REGISTER" 
+          (click)="onRegister()"
+        >
+          login
+        </a>
+        <a
+          *ngIf="state === STATES.LOGIN" 
+          (click)="onLogin()"
+        >
+            register
+        </a>
+      </div>
+    </div>
+
 </div>

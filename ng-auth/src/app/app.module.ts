@@ -13,9 +13,12 @@ import { UserService } from './_services/user.service';
 import { CanActivateViaAuthGuard } from './_guards/is-logged-in.guard';
 import { NotAuthGuard } from './_guards/not-logged-in.guard';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
     AuthenticationModule,

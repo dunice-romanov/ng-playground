@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 import { NAVBAR_STATES } from '../../../app.constants';
 
+import animations from './start-page.animations';
+
 @Component({
   selector: 'app-start-page',
   templateUrl: './start-page.component.html',
-  styleUrls: ['./start-page.component.css']
+  styleUrls: ['./start-page.component.css'],
+  animations,
 })
 export class StartPageComponent implements OnInit {
 
@@ -18,6 +21,23 @@ export class StartPageComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onFlyInOutDone(ev, state) {
+    if (ev.toState === 'void') {
+      console.log(state);
+      this.state = state;
+    }
+    // console.log(ev);
+    // this.state = state;
+  }
+
+  onRegister() {
+    this._state = this.STATES.NULL;
+  }
+
+  onLogin() {
+    this._state = this.STATES.NULL;
   }
 
   _initStates() {
@@ -36,8 +56,11 @@ export class StartPageComponent implements OnInit {
       case this.STATES.LOGIN:
         this._state = state;
         break;
-      default:
+      case this.STATES.NULL:
         this._state = state;
+        break;
+      default:
+        this._state = state; //Should be just empty return
     }
   }
   
