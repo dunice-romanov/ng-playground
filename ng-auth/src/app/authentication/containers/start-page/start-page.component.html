@@ -1,5 +1,4 @@
-
-
-
-<!--<app-login></app-login>
-<app-register></app-register>-->
+<div >
+  <app-login *ngIf="state === STATES.LOGIN"></app-login>
+  <app-register *ngIf="state === STATES.REGISTER"></app-register>
+</div>

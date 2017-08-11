@@ -9,8 +9,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
-import { API_URI } from '../../app.constants';
-import { User } from '../../models/user.model';
+import { API_URI } from '../app.constants';
+import { User } from '../models/user.model';
 
 @Injectable()
 export class UserService {
