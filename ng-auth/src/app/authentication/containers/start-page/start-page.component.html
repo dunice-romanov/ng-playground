@@ -1,5 +1,5 @@
 <div class="container">
-    <div [@flyInOut] (@flyInOut.done)="onFlyInOutDone($event, '')" *ngIf="state === STATES.REGISTER || state === STATES.LOGIN" class="authentication">
+    <div [@flyInOut] (@flyInOut.done)="onFlyInOutDone($event)" *ngIf="state === STATES.REGISTER || state === STATES.LOGIN" class="authentication">
       <md-card class="authentication-form">
         <md-card-content>
           <app-login *ngIf="state === STATES.LOGIN"></app-login>
@@ -24,5 +24,4 @@
         </a>
       </div>
     </div>
-
 </div>

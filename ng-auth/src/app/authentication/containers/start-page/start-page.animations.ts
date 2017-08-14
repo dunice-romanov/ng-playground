@@ -9,10 +9,10 @@ import {
 const flyInOut = trigger('flyInOut', [
   transition(':enter', [
     style({transform: 'translateX(-200%)'}),
-    animate(500),
+    animate(300),
   ]),
   transition(':leave', [
-    animate(500, style({opacity: 0})),
+    animate(300, style({opacity: 0})),
   ]),
 ]);
 

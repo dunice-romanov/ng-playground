@@ -14,6 +14,7 @@ export class StartPageComponent implements OnInit {
 
   STATES = NAVBAR_STATES;
   _state: string;
+  _nextState: string;
 
 
   constructor() {
@@ -25,8 +26,8 @@ export class StartPageComponent implements OnInit {
 
   onFlyInOutDone(ev, state) {
     if (ev.toState === 'void') {
-      console.log(state);
-      this.state = state;
+      this.state = this._nextState;
+      this._nextState = null;
     }
     // console.log(ev);
     // this.state = state;
@@ -34,10 +35,12 @@ export class StartPageComponent implements OnInit {
 
   onRegister() {
     this._state = this.STATES.NULL;
+    this._nextState = this.STATES.LOGIN;
   }
 
   onLogin() {
     this._state = this.STATES.NULL;
+    this._nextState = this.STATES.REGISTER;
   }
 
   _initStates() {
@@ -60,7 +63,7 @@ export class StartPageComponent implements OnInit {
         this._state = state;
         break;
       default:
-        this._state = state; //Should be just empty return
+        return;
     }
   }
   
