@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './global-components/navbar/navbar.component';
 
 import { UserService } from './_services/user.service';
+import { ApiService } from './_services/api.service';
 
 import { CanActivateViaAuthGuard } from './_guards/is-logged-in.guard';
 import { NotAuthGuard } from './_guards/not-logged-in.guard';
@@ -29,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   providers: [
     UserService,
+    ApiService,
     CanActivateViaAuthGuard,
     NotAuthGuard,
   ],

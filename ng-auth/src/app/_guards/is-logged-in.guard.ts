@@ -17,7 +17,6 @@ export class CanActivateViaAuthGuard implements CanActivate, CanLoad {
   }
 
   canLoad(): boolean {
-    console.log('this.checkLoggedIn()', this.checkLoggedIn());
     return this.checkLoggedIn();
   }
 
