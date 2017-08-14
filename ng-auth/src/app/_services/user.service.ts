@@ -67,7 +67,7 @@ export class UserService {
   }
 
   getToken(): string {
-    const user = localStorage.user;
+    const user = JSON.parse(localStorage.user);
     if (!user) { return null; }
     return user.token;
   };
