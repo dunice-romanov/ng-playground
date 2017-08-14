@@ -34,6 +34,15 @@ export class ApiService {
     .map((resp) => resp.json())
   }
 
+  delete(uri: string) {
+    return this.http.delete(
+        `${API_URI}${uri}`,
+        { headers: this._setHeaders() }
+      )
+      .catch((error) => this._formatErrors(error))
+      .map((resp) => resp.json());
+  }
+
   _setHeaders() {
     let headers = {
       'Content-Type': 'application/json',

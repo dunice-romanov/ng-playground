@@ -34,6 +34,18 @@ export class ListComponent implements OnInit {
         (todo) => this.todos.push(todo),
         (error) => console.log('add todo error', error)
       )
-  }  
+  } 
+
+  onRemove(ev) {
+    this.todoService.removeTodo(ev.id)
+      .subscribe(
+        (todo) => {
+          this.todos = this.todos.filter((todo) => todo.id !== ev.id);
+        },
+        (error) => {
+          console.log('remove todo error', error);
+        }
+      );
+  }
 
 }

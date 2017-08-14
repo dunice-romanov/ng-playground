@@ -36,6 +36,12 @@ export class TodosService {
                 .map((value) => this._parseTodo(value));
   }
 
+  removeTodo(todoId: string) {
+    const url = `/todos/${todoId}`;
+    return this.api.delete(url)
+            .map((value) => this._parseTodo(value));
+  }
+
   _parseTodo(json) {
     const { title, text, _id } = json;
     return new Todo(_id, title, text);

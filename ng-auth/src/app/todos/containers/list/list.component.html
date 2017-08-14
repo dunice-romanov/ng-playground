@@ -2,7 +2,7 @@
   
   <div class="todos__list" fxLayout="row | wrap" fxLayout.xs="column" fxLayoutGap="2%">
     <div *ngFor="let todo of todos" fxFlex="18%">
-      <app-todo-card [todo]="todo" ></app-todo-card>
+      <app-todo-card [todo]="todo" (remove)="onRemove($event)"></app-todo-card>
     </div>
   </div>
 

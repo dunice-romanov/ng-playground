@@ -1,4 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { 
+  Component, 
+  OnInit, 
+  Input, 
+  Output, 
+  EventEmitter,
+} from '@angular/core';
 
 import { Todo } from '../../../models/todo.model';
 
@@ -11,9 +17,15 @@ export class TodoCardComponent implements OnInit {
 
   @Input() todo: Todo;
 
+  @Output() remove: EventEmitter<Todo> = new EventEmitter<Todo>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onRemove() {
+    this.remove.emit(this.todo);
   }
 
 }
