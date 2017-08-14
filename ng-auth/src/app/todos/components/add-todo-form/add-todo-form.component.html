@@ -1,0 +1,31 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <div class="form-container">
+    <div>
+      <md-input-container>
+        <input 
+          mdInput 
+          placeholder="Todo title" 
+          formControlName="title" 
+          [errorStateMatcher]="errorMatcher"
+        >
+        <md-error>This field is required</md-error>
+      </md-input-container>
+    </div>
+
+    <div>
+      <md-input-container>
+        <textarea mdInput
+                  formControlName="text"
+                  MdTextareaAutosize
+                  [errorStateMatcher]="errorMatcher"
+                  placeholder="Todo text"
+        ></textarea>
+        <md-error>This field is required</md-error>
+      </md-input-container>    
+    </div>
+
+    <div>
+      <button md-raised-button type="submit">Post!</button>
+    </div>
+  </div>
+</form>

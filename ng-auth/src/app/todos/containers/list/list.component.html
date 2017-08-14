@@ -1,3 +1,13 @@
-<p>
-  list works!
-</p>
+<div class="todos">
+  
+  <div class="todos__list" fxLayout="row | wrap" fxLayout.xs="column" fxLayoutGap="2%">
+    <div *ngFor="let todo of todos" fxFlex="18%">
+      <app-todo-card [todo]="todo" ></app-todo-card>
+    </div>
+  </div>
+
+  <div class="todos__add-form">
+    <app-add-todo-form (todo)="addTodo($event)"></app-add-todo-form>
+  </div>
+
+</div>

@@ -1,0 +1,9 @@
+md-input-container,
+button {
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 50px;
+}

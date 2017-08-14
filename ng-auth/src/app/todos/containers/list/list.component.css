@@ -1,0 +1,8 @@
+.todos {
+  padding: 30px;
+}
+
+.todos__list {
+  display: flex;
+  align-content: center;
+}
